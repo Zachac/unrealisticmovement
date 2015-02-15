@@ -1,0 +1,10 @@
+"Gamemode"
+{
+    "base"		""
+    "title"  "Unrealistic Movement"
+    "version"   "beta"
+    "menusystem"	"1"
+    "icon"  ""
+    "info"  ""
+    "hide"  "0"
+}
