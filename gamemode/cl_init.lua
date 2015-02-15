@@ -10,6 +10,18 @@ include("cl_lobbies_menu_functions.lua")
 include("cl_lobbies_menu.lua")
 include("cl_lobby_make_Settings.lua")
 
+
+
+hook.Add("Think", "initial spawn", function()
+	if (!LocalPlayer().hasInit) then
+		print("test")
+		LocalPlayer().webPos		= Vector(0,0,0)							-- used for spiderman calculations
+		LocalPlayer().radius		= 0										-- used for spiderman calculations
+		LocalPlayer().lastWtime		= 0										-- essentially used for any timer between moves
+		LocalPlayer().hasInit		= true
+	end
+end)
+
 -- 8 lines for MesseageAll to use
 local line1Alpha	= 0
 local line2Alpha	= 0

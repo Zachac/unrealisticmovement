@@ -11,14 +11,17 @@ AddCSLuaFile("cl_lobbies_menu_functions.lua")
 AddCSLuaFile("cl_lobbies_menu.lua")
 AddCSLuaFile("cl_lobby_make_Settings.lua")
 
+AddCSLuaFile("sh_air_strafing.lua")
+AddCSLuaFile("sh_movement.lua")
+
 include("shared.lua")
-include("sv_movement.lua")
+include("sh_movement.lua")
 include("sv_trail.lua")
 include("sv_heal.lua")
 include("sv_commands.lua")
 include("sv_lobbies.lua")
 include("sv_lobby_switching.lua")
-include("sv_air_strafing.lua")
+include("sh_air_strafing.lua")
 
 RunConsoleCommand("sv_gravity", "300")
 RunConsoleCommand("sv_sticktoground", "0")
@@ -62,7 +65,6 @@ hook.Add("PlayerInitialSpawn", "initial spawn", function(ply)
 end)
 
 hook.Add("PlayerSetModel", "set playermodel", function(ply)
-	print("hello")
 	ply:SetModel(player_manager.TranslatePlayerModel(ply:GetInfo("cl_playermodel")) )
 end)
 
@@ -103,7 +105,7 @@ hook.Add("GetFallDamage", "calcFallDamage", function(ply, speed)
 	return ( (speed / 20) - 30)
 end)
 
-hook.Add( "PlayerShouldTakeDamage", "playershouldtakedamage", function(ply, attacker)
+hook.Add("PlayerShouldTakeDamage", "playershouldtakedamage", function(ply, attacker)
 	if (!attacker:IsWorld() && (attacker:GetName() == "Roller Mine" || ply.lobbyID != attacker.lobbyID)) then
 		return false -- disable rollermine damage. return true to allow damage
 	end

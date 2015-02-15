@@ -1,5 +1,8 @@
 print("Loaded shared.lua")
 
+include("sh_air_strafing.lua")
+include("sh_movement.lua")
+
 GM.Name 	= "Unrealistic Movement"
 GM.Author 	= "Sparky"
 GM.Email 	= "N/A"
@@ -24,6 +27,6 @@ team.SetUp(1001, "None", Color(255,255,255,200))
 
 hook.Add("ShouldCollide", "prevent players collision", function(ent1, ent2)
 	if (ent1:IsPlayer() && ent2:IsPlayer() && ent1:Alive() && ent2:Alive()) then
-		return false -- makes it so people can't actually attack eachother...
+		return false -- also makes it so people can't actually attack eachother...
 	end
 end)

@@ -1,4 +1,4 @@
-print("Loaded sv_air_strafing.lua")
+print("Loaded sh_air_strafing.lua")
 
 -- defualt: 30, 10
 local AIR_SPEEDCAP	= 100
@@ -6,7 +6,7 @@ local AIR_ACCEL		= 100
 
 --hook.Remove("SetupMove", "air strafing")
 hook.Add("SetupMove", "air strafing", function(ply, cmd, cud)
-	if (ply:Alive() && ply.lobbyMoveType == 2) then
+	if (ply:Alive() && ply:GetNetworkedInt("lobbyMoveType") == 2 || ply:GetNetworkedInt("lobbyMoveType") == 3) then
 		local aim 			= cmd:GetMoveAngles():Forward()
 		local wishDir 		= Vector(0,0,0)
 		local wishSpeed		= 0
